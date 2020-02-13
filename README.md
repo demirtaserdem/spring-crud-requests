@@ -41,7 +41,7 @@ Install the jar file some directory like this
 On jar file directory,
 
 ```
-chmod 500 hw-0.0.1-SNAPSHOT.jar
+chmod 500 crudapi-0.0.1-SNAPSHOT.jar
 ```
 
 ##### 5. Create Linux Service 
@@ -55,12 +55,12 @@ Service file content
 
 ```
 [Unit]
-Description=helloworld.demirtas.biz
+Description=crudapi.demirtas.biz
 After=syslog.target
 
 [Service]
 User=demir
-ExecStart=/home/demir/crudapi.demirtas.biz/hw-0.0.1-SNAPSHOT.jar
+ExecStart=/home/demir/crudapi.demirtas.biz/crud-0.0.1-SNAPSHOT.jar
 SuccessExitStatus=143
 Restart=always
 RestartSec=30
@@ -110,7 +110,7 @@ server {
         server_name crudapi.demirtas.biz;
 
         location / {
-             proxy_pass http://localhost:8000/;
+             proxy_pass http://localhost:8001/;
              proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
              proxy_set_header X-Forwarded-Proto $scheme;
              proxy_set_header X-Forwarded-Port $server_port;
@@ -156,7 +156,7 @@ sudo certbot --nginx -d {domainName} -d {www.domainName}
 I use this command for single domain
  
 ```
-sudo certbot --nginx -d helloworld.demirtas.biz 
+sudo certbot --nginx -d crudapi.demirtas.biz 
 ```
 Note:
 	Select in options, http to https redirect option. 
